@@ -1,21 +1,18 @@
-import {useState} from "react";
+import { Routes, Route } from "react-router-dom";
+import { BoardProvider } from "./BoardContext";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
+import PostDetail from "./PostDetail";
 
 function BoardApp() {
-  const [posts, setPosts] = useState([]);
-
-  // 새 글 추가
-  const addPost = (post) => {
-    setPosts([post, ...posts]); // 최신 글 맨 위
-  };
-
   return (
-    <div>
-      <h2>간단 게시판</h2>
-      <PostForm onAdd={addPost} />
-      <PostList posts={posts} />
-    </div>
+    <BoardProvider>
+      <Routes>
+        <Route path="" element={<PostList />} />          {/* /board */}
+        <Route path="write" element={<PostForm />} />     {/* /board/write */}
+        <Route path=":id" element={<PostDetail />} />     {/* /board/:id */}
+      </Routes>
+    </BoardProvider>
   );
 }
 

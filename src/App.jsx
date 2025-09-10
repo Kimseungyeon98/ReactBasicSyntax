@@ -1,7 +1,6 @@
 import './App.css'
 import { Link, Routes, Route } from "react-router-dom";
 
-
 import ChapterApp from './chapter/ChapterApp';
 import BoardApp from './boardApp/BoardApp';
 
@@ -16,9 +15,8 @@ function App() {
       <hr />
 
       <Routes>
-        <Route path="/" element={<ChapterApp />}
-        />
-        <Route path="/board" element={<BoardApp />} />
+        <Route path="/" element={<ChapterApp />} />
+        <Route path="/board/*" element={<BoardApp />} />
       </Routes>
     </div>
   );
